@@ -1,3 +1,3 @@
 # spittr
-Study Spring MVC
+Study Spring MVC    
 ————by <<Spring in Action>>
