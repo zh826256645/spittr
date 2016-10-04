@@ -8,6 +8,7 @@ import org.springframework.web.servlet.config.annotation.DefaultServletHandlerCo
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 
 
 /**
@@ -22,6 +23,19 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 // 启动自动扫描
 @ComponentScan("spittr.web")
 public class WebConfig extends WebMvcConfigurerAdapter{
+	
+	// 配置 TilesConfigurer
+	@Bean
+	public TilesConfigurer TilesConfigurer() {
+		// 定义 Tiles 位置
+		TilesConfigurer tiles = new TilesConfigurer();
+		tiles.setDefinitions(new String[] {
+				"/WEB-INF/layout/tiles.xml"
+		});
+		// 启用刷新
+		tiles.setCheckRefresh(true);
+		return tiles;
+	}
 	
 	// 配置 JSP 视图解析器
 	@Bean
