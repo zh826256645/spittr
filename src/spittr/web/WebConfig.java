@@ -7,8 +7,8 @@ import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
+import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
 
 /**
@@ -37,16 +37,10 @@ public class WebConfig extends WebMvcConfigurerAdapter{
 		return tiles;
 	}
 	
-	// 配置 JSP 视图解析器
+	// 配置 Tiles3 视图解析器
 	@Bean
 	public ViewResolver viewResolver() {
-		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-		// 加前缀
-		resolver.setPrefix("/WEB-INF/views/");
-		// 加后缀
-		resolver.setSuffix(".jsp");
-		resolver.setExposeContextBeansAsAttributes(true);
-		return resolver;
+		return new TilesViewResolver();
 	}
 	
 	// 配置静态资源的处理
