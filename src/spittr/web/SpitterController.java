@@ -33,7 +33,8 @@ public class SpitterController {
 	// URI:/spitter/register GET
 	// return:registerForm.jsp
 	@RequestMapping(value="/register", method=RequestMethod.GET)
-	public String showRegistrationForm() {
+	public String showRegistrationForm(Model model) {
+		model.addAttribute(new Spitter());
 		return "registerForm";
 	}
 	
