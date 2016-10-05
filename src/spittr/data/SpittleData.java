@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import spittr.Spittle;
+import spittr.web.SpittleNotfoundException;
 
 @Component
 @Profile("noData")
@@ -41,6 +42,6 @@ public class SpittleData implements SpittleRepository{
 				return spittle;
 			}
 		}
-		return null;
+		throw new SpittleNotfoundException();
 	}
 }

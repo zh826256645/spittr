@@ -47,4 +47,6 @@ public class SpittleController {
 		model.addAttribute(spittleRepository.findOne(spittleId));
 		return "spittle";
 	}
+	
+	
 }
