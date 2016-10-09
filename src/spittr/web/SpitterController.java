@@ -75,4 +75,10 @@ public class SpitterController {
 		}
 		return "profile";
 	}
+	
+	@RequestMapping(value="me", method=RequestMethod.GET)
+	public String me() {
+		System.out.println("ME ME ME ME ME ME ME");
+		return "home";
+	}
 }

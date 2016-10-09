@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+<%@ taglib uri="http://www.springframework.org/tags/form"  prefix="sf"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
 <html>
   <head>
     <title>Spitter</title>
@@ -11,6 +12,13 @@
     <h1>Welcome to Spitter</h1>
 
     <a href="<c:url value="/spittles" />">Spittles</a> | 
-    <a href="<c:url value="/spitter/register" />">Register</a>
+    <a href="<c:url value="/spitter/register" />" >Register</a>|
+    <c:if test="${sessionScope.SPRING_SECURITY_CONTEXT != null}">
+    <security:authentication property="principal.username"/>
+    </c:if>
+    <br/>
+    <sf:form servletRelativeAction="/logout" method="post">
+    	<input type="submit" value="logout"/>
+    </sf:form>
   </body>
 </html>
